@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 
 gem 'haml'
 
+gem 'bootstrap-sass'
+
+gem 'unicorn'
+
 gem 'serialport'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
