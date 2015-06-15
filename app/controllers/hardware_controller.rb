@@ -1,2 +1,0 @@
-class HardwareController < ApplicationController
-end
