@@ -4,6 +4,10 @@ class TanksController < ApplicationController
 		@tanks = Tank.all
 	end
 
+	def index
+		@tanks = Tank.all
+	end
+
 	def edit
 		@tank = get_id
 	end
@@ -39,8 +43,6 @@ class TanksController < ApplicationController
 		tank = get_id
 		tank.destroy
 		redirect_to action: :home
-	end
-
 	end
 
 	private

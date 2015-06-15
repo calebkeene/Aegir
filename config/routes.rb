@@ -4,7 +4,9 @@ Rails.application.routes.draw do
 
   root 'tanks#home'
 #get 'home', to: 'tank#home'
-
+  resources :tanks do
+    resources :notifications, only: [:index, :show]
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

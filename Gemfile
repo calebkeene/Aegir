@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'haml'
 
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 gem 'unicorn'
 
