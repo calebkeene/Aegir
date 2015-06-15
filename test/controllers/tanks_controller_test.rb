@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class TankControllerTest < ActionController::TestCase
+class TanksControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
