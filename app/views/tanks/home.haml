@@ -1,3 +1,10 @@
-%h1 Ægir
+.col-md-6.col-md-offset-6
+	%h1.main-header.text-center=image_tag('icon.jpg')
+	%table.table
+		%tr
+			%td.col-md-4=link_to('Control panel', control_url)
+			%td.col-md-4=link_to('Manage Tanks', manage_url)
+			%td.col-md-4.text-right=link_to('About', about_url)
 
-%h5 needs to have tank data (visualised in graphs) will be rendering json notifications
+
+	%h5 needs to have tank data (visualised in graphs) will be rendering json notifications

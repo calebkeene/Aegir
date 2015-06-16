@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'tanks#home'
+  get 'about', to: 'tanks#about'
+  get 'manage', to: 'tanks#manage'
+  get 'control', to: 'tanks#control'
 #get 'home', to: 'tank#home'
   resources :tanks do
     resources :notifications, only: [:index, :show]

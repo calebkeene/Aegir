@@ -4,6 +4,10 @@ class TanksController < ApplicationController
 		@tanks = Tank.all
 	end
 
+	def about
+		@tanks = Tank.all
+	end
+
 	def index
 		@tanks = Tank.all
 	end
