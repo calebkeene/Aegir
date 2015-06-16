@@ -15,4 +15,4 @@ development:
 
 staging:
   <<: *default
-  database: overseer_production
+  database: aegir_staging
