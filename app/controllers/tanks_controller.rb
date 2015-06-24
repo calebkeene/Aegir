@@ -5,7 +5,7 @@ class TanksController < ApplicationController
 	end
 
 	def about
-		@tanks = Tank.all
+		@tanks = Tank.all?
 	end
 
 	def index

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'about', to: 'tanks#about'
   get 'manage', to: 'tanks#manage'
   get 'control', to: 'tanks#control'
+  get 'info', to: 'tanks#info'
 #get 'home', to: 'tank#home'
   resources :tanks do
     resources :notifications, only: [:index, :show]

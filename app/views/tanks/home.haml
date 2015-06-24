@@ -8,8 +8,13 @@
 
 	%br
 	-if @tanks.any?
-		%h2.main-header Currently active Tanks
+		%h4.text-center Active Tanks
 		-@tanks.each do |tank|
-			%h4 tank.name
+			%h3=tank.name
+
+			%table.table
+				%tr
+					%td=link_to('tank info', info_url)
+					%td.text-right="last water change: #{tank.last_water_change.localtime}"
 	-else
 		%h2.main-header No active Tanks currently
