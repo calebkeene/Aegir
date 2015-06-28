@@ -1,32 +1,32 @@
 -if flash[:notice]
-	=flash[:notice]
+  =flash[:notice]
 %h3 Tank information and Management
 
 -if @tanks.any?
-	-@tanks.each do |tank|
-		%h2=tank.name
+  -@tanks.each do |tank|
+    %h2=tank.name
 
-		%table.table.table-hover
-			%tr
-				%td
-					%strong
-						="Volume:"
-				%td=tank.volume
-			%tr
-				%td
-					%strong
-						="number of fish:"
-				%td=tank.fish_number
-			%tr
-				-last = tank.last_water_change
-				-if not_nil?(last)	
-					%td
-						%strong
-							="last water change:"
-							%td="#{distance_of_time_in_words(last, Time.now)} ago - (#{last})"
-			%tr
-				%td=button_to "update Tank info", edit_tank_path(tank), method: :get
-				%td=button_to "delete Tank", tank_path(tank), method: :delete, data: {confirm: "are you sure you want to delete #{tank.name} from the database?"}
+    %table.table.table-hover
+      %tr
+        %td
+          %strong
+            ="Volume:"
+        %td=tank.volume
+      %tr
+        %td
+          %strong
+            ="number of fish:"
+        %td=tank.fish_number
+      %tr
+        -last = tank.last_water_change
+        -if not_nil?(last)  
+          %td
+            %strong
+              ="last water change:"
+              %td="#{distance_of_time_in_words(last, Time.now)} ago - (#{last})"
+      %tr
+        %td=button_to "update Tank info", edit_tank_path(tank), method: :get
+        %td=button_to "delete Tank", tank_path(tank), method: :delete, data: {confirm: "are you sure you want to delete #{tank.name} from the database?"}
 %br
 =link_to 'Add new Tank', new_tank_url, remote: true
 
