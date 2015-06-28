@@ -1,6 +1,6 @@
 class TanksController < ApplicationController
 	respond_to :html, :js
-	
+
 	def home 
 		@tanks = all_tanks
 	end
@@ -53,7 +53,7 @@ class TanksController < ApplicationController
 	def destroy
 		tank = get_id
 		tank.destroy
-		redirect_to action: :home
+		redirect_to action: :manage
 	end
 
 	private

@@ -24,6 +24,7 @@
 			%table.table
 				%tr
 					%td=link_to('tank info', tank)
-					%td.text-right="last water change: #{tank.last_water_change.localtime}"
+					-if not_nil?(tank.last_water_change)
+						%td.text-right="last water change: #{tank.last_water_change.localtime}"
 	-else
 		%h2.main-header No active Tanks currently

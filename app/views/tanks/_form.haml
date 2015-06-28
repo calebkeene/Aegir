@@ -1,0 +1,8 @@
+=form_for @tank, remote: true do |t|
+	=t.label "Name"
+	=t.text_field :name
+	=t.label "Volume"
+	=t.text_field :volume
+	=t.label "number of fish"
+	=t.text_field :fish_number
+	=t.submit
