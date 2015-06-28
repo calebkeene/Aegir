@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'haml'
 
+gem 'devise'
+
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 

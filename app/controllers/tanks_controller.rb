@@ -1,15 +1,20 @@
 class TanksController < ApplicationController
-
+	respond_to :html, :js
+	
 	def home 
-		@tanks = Tank.all
+		@tanks = all_tanks
 	end
 
 	def about
-		@tanks = Tank.all?
+		@tanks = all_tanks
+	end
+
+	def manage
+		@tanks = all_tanks
 	end
 
 	def index
-		@tanks = Tank.all
+		@tanks = all_tanks
 	end
 
 	def edit
@@ -23,7 +28,8 @@ class TanksController < ApplicationController
 	def create
 		@tank = Tank.new(tank_params)
 		if @tank.save
-				redirect_to action: :home
+				flash.notice = "New Tank added"
+				redirect_to action: :manage
 		else
 			render :new
 		end
@@ -32,7 +38,8 @@ class TanksController < ApplicationController
 	def update
 		@tank = get_id
 		if @tank.update(tank_params)
-			redirect_to action: :home
+			flash.notice = "Successfully updated"
+			redirect_to action: :manage
 		else
 			flash[:message] = @tank.errors.messages
 			redirect_to action: :edit
@@ -52,5 +59,13 @@ class TanksController < ApplicationController
 	private
 	def get_id
 		Tank.find(params[:id])
+	end
+
+	def all_tanks
+		@tanks = Tank.all
+	end
+	
+	def tank_params
+		params[:tank].permit(:name, :volume, :fish_number)
 	end
 end
