@@ -1,6 +1,4 @@
 class Tank < ActiveRecord::Base
-
-	has_many :notifications
-	validates :name, presence: true
-
+  has_many :notifications
+  validates :name, presence: true
 end

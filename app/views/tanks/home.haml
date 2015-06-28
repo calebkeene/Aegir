@@ -1,30 +1,30 @@
 .col-md-6.col-md-offset-6
-	-if user_signed_in?
-		-if has_name?(current_user)
-			="current user: #{current_user.name}"
-		-else
-			="current user email: #{current_user.email}"
-	
-	%h1.main-header.text-center=image_tag('icon.jpg')
-	%table.table
-		%tr
-			%td.col-md-4=link_to('Manage Tanks', manage_url)
-			%td.col-md-4=link_to('About', about_url)
-			-if user_signed_in?
-				%td.col-md-4.text-right=link_to('Logout', destroy_user_session_path, method: :delete)
-			-else
-				%td.col-md-3.text-right=link_to('Login', new_user_session_path)
+  -if user_signed_in?
+    -if has_name?(current_user)
+      ="current user: #{current_user.name}"
+    -else
+      ="current user email: #{current_user.email}"
+  
+  %h1.main-header.text-center=image_tag('icon.jpg')
+  %table.table
+    %tr
+      %td.col-md-4=link_to('Manage Tanks', manage_url)
+      %td.col-md-4=link_to('About', about_url)
+      -if user_signed_in?
+        %td.col-md-4.text-right=link_to('Logout', destroy_user_session_path, method: :delete)
+      -else
+        %td.col-md-3.text-right=link_to('Login', new_user_session_path)
 
-	%br
-	-if @tanks.any?
-		%h4.text-center Active Tanks
-		-@tanks.each do |tank|
-			%h3=tank.name
+  %br
+  -if @tanks.any?
+    %h4.text-center Active Tanks
+    -@tanks.each do |tank|
+      %h3=tank.name
 
-			%table.table
-				%tr
-					%td=link_to('tank info', tank)
-					-if not_nil?(tank.last_water_change)
-						%td.text-right="last water change: #{tank.last_water_change.localtime}"
-	-else
-		%h2.main-header No active Tanks currently
+      %table.table
+        %tr
+          %td=link_to('tank info', tank)
+          -if not_nil?(tank.last_water_change)
+            %td.text-right="last water change: #{tank.last_water_change.localtime}"
+  -else
+    %h2.main-header No active Tanks currently
