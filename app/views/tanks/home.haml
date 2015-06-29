@@ -4,7 +4,9 @@
       ="current user: #{current_user.name}"
     -else
       ="current user email: #{current_user.email}"
-  
+ 
+  =render 'layouts/header'
+
   %h1.main-header.text-center=image_tag('icon.jpg')
   %table.table
     %tr

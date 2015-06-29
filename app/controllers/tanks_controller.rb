@@ -1,19 +1,12 @@
 class TanksController < ApplicationController
+	before_action :all_tanks, only: [:home, :create]
 	respond_to :html, :js
-
-	def home 
-		@tanks = all_tanks
-	end
 
 	def about
 		@tanks = all_tanks
 	end
 
 	def manage
-		@tanks = all_tanks
-	end
-
-	def index
 		@tanks = all_tanks
 	end
 
@@ -53,6 +46,7 @@ class TanksController < ApplicationController
 	def destroy
 		tank = get_id
 		tank.destroy
+		flash.notice = "Tank removed"
 		redirect_to action: :manage
 	end
 
