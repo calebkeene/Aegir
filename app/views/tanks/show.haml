@@ -15,6 +15,9 @@
       %strong
         ="last water change:"
     -last = @tank.last_water_change
-    %td="#{distance_of_time_in_words(last, Time.now)} ago - (#{last})"
+    -if not_nil?(last)
+      %td="#{distance_of_time_in_words(last, Time.now)} ago - (#{last})"
+    -else
+      %td this tank has not yet had a water change
 %br
-=link_to('back', root_url)
+=link_to('home', root_url)

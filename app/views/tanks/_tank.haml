@@ -18,6 +18,8 @@
         %strong
           ="last water change:"
           %td="#{distance_of_time_in_words(last, Time.now)} ago - (#{last})"
+    -else
+      %td this tank has not yet had a water change
   %tr
     %td=button_to "update Tank info", edit_tank_path(tank), method: :get, remote: true
     %td=button_to "delete Tank", tank_path(tank), method: :delete, data: {confirm: "are you sure you want to delete #{tank.name} from the database?"}

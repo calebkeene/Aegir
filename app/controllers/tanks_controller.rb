@@ -1,12 +1,8 @@
 class TanksController < ApplicationController
-	before_action :all_tanks, only: [:home, :create]
+	before_action :all_tanks, only: [:home, :create, :manage, :update]
 	respond_to :html, :js
 
 	def about
-		@tanks = all_tanks
-	end
-
-	def manage
 		@tanks = all_tanks
 	end
 
@@ -22,7 +18,6 @@ class TanksController < ApplicationController
 		@tank = Tank.new(tank_params)
 		if @tank.save
 				flash.notice = "New Tank added"
-				redirect_to action: :manage
 		else
 			render :new
 		end
@@ -32,10 +27,8 @@ class TanksController < ApplicationController
 		@tank = get_id
 		if @tank.update(tank_params)
 			flash.notice = "Successfully updated"
-			redirect_to action: :manage
 		else
 			flash[:message] = @tank.errors.messages
-			redirect_to action: :edit
 		end
 	end
 

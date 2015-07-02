@@ -1,11 +1,12 @@
 =render 'layouts/header'
 %h3 Tank information and Management
 %div{id: 'tanks'}
-  =render @tanks
-  %br
-    =link_to 'Add new Tank', new_tank_path, remote: true
+  -if @tanks.any?
+    =render @tanks
 
-  %div{id: 'tank-form', style: 'display:none;'}
+%div{id: 'tank-form', style: 'display:none;'}
 
-  %br
+%br
+=link_to 'Add new Tank', new_tank_path, remote: true
+%br
 =link_to 'home', root_url
