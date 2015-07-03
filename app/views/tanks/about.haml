@@ -1,9 +1,10 @@
 .col-md-6.col-md-offset-6
-	%h1.main-header Ægir
+	%h1.main-header=image_tag('icon.jpg') 
 	%h5 (Aquarium Environmental General Information Reporting)
 	
 	%p 
 		© Caleb Keene 2015
+
 	%p="Currently #{@tanks.count} active tank(s)"
 
 	%br

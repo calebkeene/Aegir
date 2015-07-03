@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'manage', to: 'tanks#manage'
   get 'control', to: 'tanks#control'
   get 'info', to: 'tanks#info'
+  #post 'tanks/water_change', to: 'tanks#water_change'
 #get 'home', to: 'tank#home'
   resources :tanks do
     resources :notifications, only: [:index, :show]

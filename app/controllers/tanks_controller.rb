@@ -14,6 +14,13 @@ class TanksController < ApplicationController
 		@tank = Tank.new
 	end
 
+	def water_change
+		@tank = get_id
+		@tank.last_water_change = Time.now
+		@tank.update!
+		redirect_to action: :home
+	end
+
 	def create
 		@tank = Tank.new(tank_params)
 		if @tank.save
@@ -27,6 +34,7 @@ class TanksController < ApplicationController
 		@tank = get_id
 		if @tank.update(tank_params)
 			flash.notice = "Successfully updated"
+			#redirect_to action: :home
 		else
 			flash[:message] = @tank.errors.messages
 		end
@@ -53,6 +61,6 @@ class TanksController < ApplicationController
 	end
 	
 	def tank_params
-		params[:tank].permit(:name, :volume, :fish_number)
+		params[:tank].permit(:name, :volume, :fish_number, :last_water_change)
 	end
 end

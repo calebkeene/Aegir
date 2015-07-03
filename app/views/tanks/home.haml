@@ -7,13 +7,15 @@
         ="current user email: #{current_user.email}"
    
     =render 'layouts/header'
-    %h1.main-header.text-center=image_tag('icon.jpg')
-    %table.table
+    %h1.text-center
+      %strong
+        Ægir
+    %table.table{style: 'color: #FFF;'}
       %tr
-        %td.col-md-4=link_to('Manage Tanks', manage_url)
-        %td.col-md-4=link_to('About', about_url)
+        %td.col-md-4=link_to('Manage Tanks', manage_url, style: 'color: #FFF')
+        %td.col-md-4=link_to('About', about_url, style: 'color: #FFF')
         -if user_signed_in?
-          %td.col-md-4.text-right=link_to('Logout', destroy_user_session_path, method: :delete)
+          %td.col-md-4.text-right=link_to('Logout', destroy_user_session_path, method: :delete, style: 'color: #FFF')
         -else
           %td.col-md-3.text-right=link_to('Login', new_user_session_path)
 
@@ -25,8 +27,12 @@
 
         %table.table
           %tr
-            %td=link_to('tank info', tank)
-            -if not_nil?(tank.last_water_change)
-              %td.text-right="last water change: #{tank.last_water_change.localtime}"
+            %td=button_to('info', tank, method: :get)
+            %td=button_to('water change', tank, action: :water_change)
+            -last = tank.last_water_change
+            -if not_nil?(last)
+              %td.text-right{style: 'color: #FFF'}="last water change: #{distance_of_time_in_words(last, Time.now)} ago (#{last.localtime})"
+            -else
+              %td.text-right{style: 'color: #FFF'} this tank has not yet had a water change
     -else
       %h2.main-header No active Tanks currently
