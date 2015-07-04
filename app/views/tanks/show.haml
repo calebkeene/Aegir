@@ -4,19 +4,19 @@
     %td
       %strong
         ="Volume:"
-    %td=@tank.volume
+    %td{style: 'font-size: large;'}=@tank.volume
   %tr
     %td
       %strong
         ="number of fish:"
-    %td=@tank.fish_number
+    %td{style: 'font-size: large;'}=@tank.fish_number
   %tr
     %td
       %strong
         ="last water change:"
     -last = @tank.last_water_change
     -if not_nil?(last)
-      %td{style: 'color: #FFF'}="#{distance_of_time_in_words(last, Time.now)} ago - (#{last.localtime})"
+      %td{style: 'color: #FFF'}="done by #{@tank.last_water_change_user} #{distance_of_time_in_words(last, Time.now)} ago - (#{last.localtime})"
     -else
       %td{style: 'color: #FFF'} this tank has not yet had a water change
 %br

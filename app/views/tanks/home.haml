@@ -10,12 +10,13 @@
     %h1.text-center
       %strong
         Ægir
-    %table.table{style: 'color: #FFF;'}
+    %table.table
       %tr
-        %td.col-md-4=link_to('Manage Tanks', manage_url, style: 'color: #FFF')
-        %td.col-md-4=link_to('About', about_url, style: 'color: #FFF')
+        %td.col-md-3=link_to('Manage Tanks', manage_url)
+        %td.col-md-3.text-left=link_to('About', about_url)
+        %td.col-md-3.text-right=link_to('User stats', stats_url)
         -if user_signed_in?
-          %td.col-md-4.text-right=link_to('Logout', destroy_user_session_path, method: :delete, style: 'color: #FFF')
+          %td.col-md-3.text-right=link_to('Logout', destroy_user_session_path, method: :delete)
         -else
           %td.col-md-3.text-right=link_to('Login', new_user_session_path)
 

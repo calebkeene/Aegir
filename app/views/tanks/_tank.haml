@@ -5,12 +5,12 @@
     %td
       %strong
         ="Volume:"
-    %td=tank.volume
+    %td{style: 'font-size: large;'}=tank.volume
   %tr
     %td
       %strong
         ="number of fish:"
-    %td=tank.fish_number
+    %td{style: 'font-size: large;'}=tank.fish_number
   %tr
     -last = tank.last_water_change
     -if not_nil?(last)  

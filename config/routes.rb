@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'manage', to: 'tanks#manage'
   get 'control', to: 'tanks#control'
   get 'info', to: 'tanks#info'
+  get 'stats', to: 'users#stats'
   #post 'tanks/:id/water_change' => 'tanks#water_change', as: :water_change
   #post 'tanks/water_change', to: 'tanks#water_change'
 #get 'home', to: 'tank#home'

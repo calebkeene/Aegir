@@ -1,5 +1,5 @@
 module TanksHelper
-	
+
 	def has_name?(user)
 		user.name==nil ? false : true
 	end
