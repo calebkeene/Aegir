@@ -10,9 +10,13 @@ Rails.application.routes.draw do
   get 'manage', to: 'tanks#manage'
   get 'control', to: 'tanks#control'
   get 'info', to: 'tanks#info'
+  #post 'tanks/:id/water_change' => 'tanks#water_change', as: :water_change
   #post 'tanks/water_change', to: 'tanks#water_change'
 #get 'home', to: 'tank#home'
   resources :tanks do
+    member do
+      post 'water_change'
+    end
     resources :notifications, only: [:index, :show]
   end
   # Example of regular route:

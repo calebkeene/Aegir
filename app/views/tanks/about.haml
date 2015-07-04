@@ -4,8 +4,13 @@
 	
 	%p 
 		© Caleb Keene 2015
-
-	%p="Currently #{@tanks.count} active tank(s)"
+	-count = @tanks.count
+	-if count<1
+		%p No currently active Tanks
+	-elsif count==1
+		%p Currently 1 active Tank
+	-else
+		%p= "Currently #{count} active Tanks"
 
 	%br
 	=link_to('home', root_url)

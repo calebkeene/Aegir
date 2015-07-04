@@ -17,7 +17,8 @@ class TanksController < ApplicationController
 	def water_change
 		@tank = get_id
 		@tank.last_water_change = Time.now
-		@tank.update!
+		@tank.save!
+		flash.notice = "Water changed!"
 		redirect_to action: :home
 	end
 
@@ -34,7 +35,6 @@ class TanksController < ApplicationController
 		@tank = get_id
 		if @tank.update(tank_params)
 			flash.notice = "Successfully updated"
-			#redirect_to action: :home
 		else
 			flash[:message] = @tank.errors.messages
 		end

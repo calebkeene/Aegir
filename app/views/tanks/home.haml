@@ -1,4 +1,4 @@
-.col-md-6.col-md-offset-6
+.col-md-6.col-md-offset-6.center-text
   .body
     -if user_signed_in?
       -if has_name?(current_user)
@@ -28,10 +28,13 @@
         %table.table
           %tr
             %td=button_to('info', tank, method: :get)
-            %td=button_to('water change', tank, action: :water_change)
+            %td=button_to 'water change', water_change_tank_url(id: tank.id)
             -last = tank.last_water_change
             -if not_nil?(last)
-              %td.text-right{style: 'color: #FFF'}="last water change: #{distance_of_time_in_words(last, Time.now)} ago (#{last.localtime})"
+              -if water_change_due?(last)
+                %td.text-right{style: 'color: #FFF'}="water change due! (last water change #{distance_of_time_in_words(last, Time.now)} ago)"
+              -else
+                %td.text-right{style: 'color: #FFF;'}="next water change due in #{next_water_change(last)} (last changed #{last.localtime})"
             -else
               %td.text-right{style: 'color: #FFF'} this tank has not yet had a water change
     -else
