@@ -39,7 +39,9 @@ class TanksController < ApplicationController
 
 	def update
 		@tank = get_id
-		@tank.update(tank_params) ? flash.notice = "Successfully updated" : flash.notice = @tank.errors.messages
+		if !@tank.update(tank_params)
+			flash.notice = @tank.errors.messages
+		end
 	end
 
 	def show

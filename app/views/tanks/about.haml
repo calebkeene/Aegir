@@ -2,9 +2,6 @@
 	.body
 		%h1.main-header=image_tag('icon.jpg') 
 		%h5 (Aquarium Environmental General Information Reporting)
-		
-		%p 
-			© Caleb Keene 2015
 		-count = @tanks.count
 		-if count<1
 			%p No currently active Tanks
@@ -12,6 +9,11 @@
 			%p Currently 1 active Tank
 		-else
 			%p= "Currently #{count} active Tanks"
-
+		%p
+			%span
+				="application code on "
+				=link_to "github", "https://github.com/calebkeene/Aegir", {style: 'color: #FFF'}
+		%p 
+			© Caleb Keene 2015
 		%br
 		=link_to('home', root_url)
