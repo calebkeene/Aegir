@@ -1,16 +1,17 @@
-.col-md-6.col-md-offset-6.text-center
-	%h1.main-header=image_tag('icon.jpg') 
-	%h5 (Aquarium Environmental General Information Reporting)
-	
-	%p 
-		© Caleb Keene 2015
-	-count = @tanks.count
-	-if count<1
-		%p No currently active Tanks
-	-elsif count==1
-		%p Currently 1 active Tank
-	-else
-		%p= "Currently #{count} active Tanks"
+.col-md-8.col-md-offset-2.text-center
+	.body
+		%h1.main-header=image_tag('icon.jpg') 
+		%h5 (Aquarium Environmental General Information Reporting)
+		
+		%p 
+			© Caleb Keene 2015
+		-count = @tanks.count
+		-if count<1
+			%p No currently active Tanks
+		-elsif count==1
+			%p Currently 1 active Tank
+		-else
+			%p= "Currently #{count} active Tanks"
 
-	%br
-	=link_to('home', root_url)
+		%br
+		=link_to('home', root_url)

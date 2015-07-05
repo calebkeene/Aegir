@@ -1,12 +1,14 @@
-=render 'layouts/header'
-%h3 Tank information and Management
-%div{id: 'tanks'}
-  -if @tanks.any?
-    =render @tanks
+.col-md-8.col-md-offset-2
+  .body
+    =render 'layouts/header'
+    %h3 Tank information and Management
+    %div{id: 'tanks'}
+      -if @tanks.any?
+        =render @tanks
 
-%div{id: 'tank-form', style: 'display:none;'}
+    %div{id: 'tank-form', style: 'display:none;'}
 
-%br
-=link_to 'Add new Tank', new_tank_path, remote: true
-%br
-=link_to 'home', root_url
+    %br
+    =link_to 'Add new Tank', new_tank_path, remote: true
+    %br
+    =link_to 'home', root_url

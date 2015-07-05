@@ -18,7 +18,8 @@ Rails.application.routes.draw do
     member do
       post 'water_change'
     end
-    resources :notifications, only: [:index, :show]
+    resource :notifications, only: [:index, :show]
+    resource :pump, only: [:show, :edit, :new]
   end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
