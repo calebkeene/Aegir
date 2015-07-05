@@ -14,7 +14,7 @@
       %tr
         %td.col-md-3=link_to('Manage Tanks', manage_url)
         %td.col-md-3.text-left=link_to('About', about_url)
-        %td.col-md-3.text-right=link_to('User stats', stats_url)
+        %td.col-md-3.text-right=link_to('Users', stats_url)
         -if user_signed_in?
           %td.col-md-3.text-right=link_to('Logout', destroy_user_session_path, method: :delete)
         -else
@@ -24,6 +24,7 @@
     -if @tanks.any?
       %h4.text-center Active Tanks
       -@tanks.each do |tank|
+        %br
         %h3=tank.name
 
         %table.table
@@ -38,5 +39,7 @@
                 %td.text-right{style: 'color: #FFF;'}="next water change due in #{next_water_change(last)} (last changed #{last.localtime})"
             -else
               %td.text-right{style: 'color: #FFF'} this tank has not yet had a water change
+      
     -else
       %h2.main-header No active Tanks currently
+
