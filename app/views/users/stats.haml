@@ -18,7 +18,16 @@
 					%strong
 						Total water changes:
 				%td{style: 'color: #FFF;'}=" #{user.water_changes}"
+			%tr
+				%td
+					%strong
+						Total skimmer cleans:
+				%td{style: 'color: #FFF;'}=" #{user.skimmer_cleans}"
+
 
 
 	%br
-	=link_to 'home', root_url
+	.text-center
+		=link_to(root_url, class: 'btn btn-primary') do
+			home
+			%span.glyphicon.glyphicon-home

@@ -26,21 +26,41 @@
       %h4.text-center Active Tanks
       -@tanks.each do |tank|
         %br
-        %h3=tank.name
+        %span
+          %h3
+            =tank.name
+            =link_to(tank) do
+              %span.glyphicon.glyphicon-info-sign
 
         %table.table
           %tr
-            %td=button_to('info', tank, method: :get)
-            %td=button_to 'water change', water_change_tank_url(id: tank.id)
+            %td
+              =button_to(water_change_tank_url(id: tank.id), class: 'btn btn-primary') do 
+                water change
+                %span.glyphicon.glyphicon-tint
+
             -last = tank.last_water_change
             -if not_nil?(last)
               -if water_change_due?(last)
-                %td.text-right{style: 'color: #FFF'}="water change due! (last water change #{distance_of_time_in_words(last, Time.now)} ago)"
+                %td{style: 'color: #D8D8D8'}="water change due! (last water change #{distance_of_time_in_words(last, Time.now)} ago)"
               -else
-                %td.text-right{style: 'color: #FFF;'}="next water change due in #{next_water_change(last)} (last changed #{last.localtime})"
+                %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="next water change due in #{next_water_change_date(last)} (last done #{date_stripper(last.localtime)})"
             -else
-              %td.text-right{style: 'color: #FFF'} this tank has not yet had a water change
-      
+              %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'} this tank has not yet had a water change
+          %tr
+            %td
+              =button_to(skimmer_clean_tank_url(id: tank.id), class: 'btn btn-primary') do
+                skimmer clean
+                %span.glyphicon.glyphicon-certificate
+
+              - last = tank.last_skimmer_clean
+              -if not_nil?(last)
+                -if skimmer_clean_due?(last)
+                  %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="skimmer clean due! (last clean #{distance_of_time_in_words(last, Time.now)} ago)"
+                -else
+                  %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="next skimmer clean due tomorrow before #{next_skimmer_clean_time(last)}"
+              -else
+                %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'} this tank has not yet had a protein skimmer clean  
     -else
       %h2.main-header No active Tanks currently
 

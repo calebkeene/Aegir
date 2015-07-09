@@ -1,0 +1,12 @@
+%tr
+  -last_s = tank.last_skimmer_clean
+  -if not_nil?(last_s)  
+    %td
+      %strong
+        ="last skimmer clean:"
+    %td{style: 'color: #FFF'}="#{distance_of_time_in_words(last_s, Time.now)} ago - (#{date_stripper(last_s.localtime)})"
+  -else
+    %td
+      %strong
+        ="last skimmer clean:"
+    %td{style: 'color: #FFF'} this tank has not yet had a protein skimmer clean  

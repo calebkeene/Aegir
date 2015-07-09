@@ -1,28 +1,48 @@
-%h2=tank.name
-
+%h2
+  =tank.name
+  
 %table.table
   %tr
     %td
       %strong
         ="Volume:"
-    %td{style: 'font-size: large;'}=tank.volume
+    %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000; font-size: large;'}=tank.volume
   %tr
     %td
       %strong
         ="number of fish:"
-    %td{style: 'font-size: large;'}=tank.fish_number
+    %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000; font-size: large;'}=tank.fish_number
   %tr
-    -last = tank.last_water_change
-    -if not_nil?(last)  
+    -last_w = tank.last_water_change
+    -if not_nil?(last_w)  
       %td
         %strong
           ="last water change:"
-          %td{style: 'color: #FFF'}="#{distance_of_time_in_words(last, Time.now)} ago - (#{last.localtime})"
+          %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="#{distance_of_time_in_words(last_w, Time.now)} ago - (#{date_stripper(last_w.localtime)})"
     -else
       %td
         %strong
           ="last water change:"
-      %td{style: 'color: #FFF'} this tank has not yet had a water change
+      %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'} this tank has not yet had a water change
   %tr
-    %td=button_to "update Tank info", edit_tank_path(tank), method: :get, remote: true
-    %td=button_to "delete Tank", tank_path(tank), method: :delete, data: {confirm: "are you sure you want to delete #{tank.name} from the database?"}
+    -last_s = tank.last_skimmer_clean
+    -if not_nil?(last_s)  
+      %td
+        %strong
+          ="last skimmer clean:"
+          %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="#{distance_of_time_in_words(last_s, Time.now)} ago - (#{date_stripper(last_s.localtime)})"
+    -else
+      %td
+        %strong
+          ="last skimmer clean:"
+      %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'} this tank has not yet had a protein skimmer clean  
+  %tr
+    %td
+      =button_to(edit_tank_path(tank), method: :get, remote: true, class: 'btn btn-primary') do
+        update
+        %span.glyphicon.glyphicon-edit
+    %td.text-right
+      =button_to(tank_path(tank), method: :delete, data: {confirm: "are you sure you want to delete #{tank.name} from the database?"}, class: 'btn btn-danger') do
+        delete
+        %span.glyphicon.glyphicon-trash
+

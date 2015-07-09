@@ -9,6 +9,14 @@
     %div{id: 'tank-form', style: 'display:none;'}
 
     %br
-    =link_to 'Add new Tank', new_tank_path, remote: true
-    %br
-    =link_to 'home', root_url
+    .form-horizontal
+      .form-group
+        .text-center
+          =link_to(new_tank_path, remote: true, class: 'btn btn-success') do
+            New Tank
+            %span.glyphicon.glyphicon-plus
+      .form-group
+        .text-center
+          =link_to(root_url) do
+            home
+            %span.glyphicon.glyphicon-home

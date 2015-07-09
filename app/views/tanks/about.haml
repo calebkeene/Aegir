@@ -9,11 +9,13 @@
 			%p Currently 1 active Tank
 		-else
 			%p= "Currently #{count} active Tanks"
-		%p
-			%span
-				="application code on "
-				=link_to "github", "https://github.com/calebkeene/Aegir", {style: 'color: #FFF'}
 		%p 
 			© Caleb Keene 2015
+		%p
+			%span
+				="code on "
+				=link_to "github", "https://github.com/calebkeene/Aegir", {style: 'color: #FFF'}
 		%br
-		=link_to('home', root_url)
+		=link_to(root_url, class: 'btn btn-primary') do
+			home
+			%span.glyphicon.glyphicon-home

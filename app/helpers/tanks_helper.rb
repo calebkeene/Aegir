@@ -12,13 +12,26 @@ module TanksHelper
 		(last_water_change.localtime + 1.week) < Time.now
 	end
 
-	def water_change_overdue?(last_water_change)
+	def water_change_overdue?(last_water_change) # used by NotificationMailer (reminder emails)
 		(last_water_change.localtime + 1.week) < (Time.now + 1.day)
 	end
 
-	def next_water_change(last_water_change)
+	def next_water_change_date(last_water_change)
 		last = last_water_change.localtime
 		"#{distance_of_time_in_words(last, last + 1.week)}"
+	end
+
+	def skimmer_clean_due?(last_skimmer_clean)
+		(last_skimmer_clean.localtime + 1.day) < Time.now
+	end
+
+	def skimmer_clean_overdue?(last_skimmer_clean) # NotificationMailer
+		(last_skimmer_clean.localtime + 1.day) < (Time.now + 1.day)
+	end
+
+	def next_skimmer_clean_time(last_skimmer_clean)
+		time = last_skimmer_clean.localtime + 1.day
+		time.to_s.split(" ")[1]
 	end
 
 end

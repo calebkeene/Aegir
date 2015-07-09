@@ -14,7 +14,6 @@ class TanksController < ApplicationController
 		@tank = Tank.new
 	end
 
-
 	def water_change
 		@tank = get_id
 		@tank.last_water_change = Time.now
@@ -23,10 +22,21 @@ class TanksController < ApplicationController
 		current = u.water_changes
 		u.water_changes = current + 1
 		u.save!
-		@tank.save! ? flash.notice = "Water changed!" : flash.notice = @tank.errors.messages
+		@tank.save! ? flash.notice = "shot bro! Water changed" : flash.notice = @tank.errors.messages
 		redirect_to action: :home
 	end
 
+	def skimmer_clean
+		@tank = get_id
+		@tank.last_skimmer_clean = Time.now
+		u = current_user
+		@tank.last_skimmer_clean_user = u.name
+		current = u.skimmer_cleans
+		u.skimmer_cleans = current + 1
+		u.save!
+		@tank.save! ? flash.notice = "shot bro! Protein skimmer cleaned" : flash.notice = @tank.errors.messages
+		redirect_to action: :home
+	end
 
 	def create
 		@tank = Tank.new(tank_params)

@@ -1,9 +1,22 @@
 =form_for @tank, remote: true do |t|
-	=t.label "Name"
-	=t.text_field :name
-	=t.label "Volume"
-	=t.text_field :volume
-	=t.label "number of fish"
-	=t.text_field :fish_number
-	=t.submit
-=link_to "cancel", manage_url
+	.form-horizontal
+		.form-group
+			.col-md-1
+				=t.label "Name", class: 'control-label'
+			.col-md-4	
+				=t.text_field :name, class: 'form-control'
+		.form-group
+			.col-md-1
+				=t.label "Volume", class: 'control-label'
+			.col-md-4
+				=t.text_field :volume, class: 'form-control'
+		.form-group
+			.col-md-1
+				=t.label "Fish", class: 'control-label'
+			.col-md-4
+				=t.text_field :fish_number, class: 'form-control'
+		.form-group
+			.col-md-6.text-center
+				=link_to 'cancel', manage_url, class: 'btn btn-default'
+
+				=t.submit class: 'btn btn-default'

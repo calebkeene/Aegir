@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :tanks do
     member do
       post 'water_change'
+      post 'skimmer_clean'
     end
     resource :notifications, only: [:index, :show]
     resource :pump, only: [:show, :edit, :new]

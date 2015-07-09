@@ -4,10 +4,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-	after_create :set_water_changes
+	after_create :initial_work
 
-	def set_water_changes
+	def initial_work
 		self.water_changes = 0
+		self.skimmer_cleans = 0
 		self.save!
 	end
 

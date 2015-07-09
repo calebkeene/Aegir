@@ -1,5 +1,7 @@
 class NotificationMailer < ApplicationMailer
+	
 	add_template_helper(TanksHelper)
+
 	default from: 'noreply@aegir.co.nz'
 
 	def water_change
