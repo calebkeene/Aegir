@@ -29,9 +29,10 @@ module TanksHelper
 		(last_skimmer_clean.localtime + 1.day) < (Time.now + 1.day)
 	end
 
-	def next_skimmer_clean_time(last_skimmer_clean)
-		time = last_skimmer_clean.localtime + 1.day
-		time.to_s.split(" ")[1]
+	def next_skimmer_clean_date(last_skimmer_clean)
+		last = last_skimmer_clean.localtime
+		"#{distance_of_time_in_words(last, last + 1.day)}"
+		
 	end
 
 end

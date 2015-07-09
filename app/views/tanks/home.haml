@@ -58,7 +58,7 @@
                 -if skimmer_clean_due?(last)
                   %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="skimmer clean due! (last clean #{distance_of_time_in_words(last, Time.now)} ago)"
                 -else
-                  %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="next skimmer clean due tomorrow before #{next_skimmer_clean_time(last)}"
+                  %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'}="next skimmer clean due in #{next_skimmer_clean_date(last)} (last done #{date_stripper(last.localtime)})"
               -else
                 %td{style: 'color: #D8D8D8; text-shadow: 1px 1px #000;'} this tank has not yet had a protein skimmer clean  
     -else
